@@ -3,6 +3,9 @@
 
 *This library allows to facilitate the use of querystrings in JQuery.*
 
+### Required:
+JQuery (tested on 3.6.0)
+
 # How to use it
 *Firstable you have to initialize the object*
 var req = new request();
