@@ -80,7 +80,7 @@ function queryString(name, req){
 //req.init();
 //var res = req.queryString("test");
 
-//req.addQSParameter("nome","andre",true);
-//req.addQSParameter("nome","andre");
+//req.addQSParameter("name","value",true);
+//req.addQSParameter("name","value");
 
 //console.log(req.search);
