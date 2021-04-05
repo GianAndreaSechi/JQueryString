@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+        <meta content="utf-8" http-equiv="encoding"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+    <title>JQueryString</title>
+    <style>
+      body{
+        font-family: "Sofia", sans-serif;
+        text-align: center;
+      }
+      ul li{
+        list-style-type: none;
+      }
+      a{
+        text-decoration: none;
+      }
+    </style>
+    </head>
+    <body>
+      <h1>JQueryString</h2>
+        <p>
+          JQueryString is a simple JQuery add on to get query string parameter in simple way (as you can in .net/php).<br>
+          <i>This page is a minimal example how you can use JQueryString in practice.</i>
+        </p>
+      <hr>
+      <div>
+        <a href="example.html?par1=1&par2=2&par3=3">Setting example QueryString</a>
+      </div>
+      <hr>
+        <div>
+          <h4>QueryString parameters list:</h4>
+          <ul id="parList">
+
+          </ul>
+        </div>
+        <hr>
+        <div>
+          <h4>Search Quearystring parameter</h4>
+          <input id="txtSearch" type="text"/><input id="btnSearch" type="submit" value="Search"/>
+          <br>
+          <span id="result"></span>
+        </div>
+        <hr>
+        <div>
+          <h4>Add Quearystring parameter</h4>
+          <input id="txtName" type="text"/><input id="txtValue" type="text"/><input id="btnAdd" type="submit" value="Add"/><input id="btnNew" type="submit" value="New"/>
+          <br>
+          <span id="link"></span>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="JQueryString.js"></script>
+        <script>
+          var req = new request();
+          req.init();
+
+          //print each queryStrings parameter
+          $.each(req.search_parameters, function(i,search_parameter){
+            $("#parList").append("<li>Name: "+ search_parameter.name +" - Value: " + search_parameter.value + "</li>");
+          });
+
+          $(document).ready(function () {
+            //this is an example how you can retrieve your queryString parameter value (if exist).
+            $("#btnSearch").click(function(){
+              var txtSearch = $('#txtSearch').val();
+              var result = req.queryString(txtSearch);
+              if (result != ""){
+                $("#result").text("Found Queystring - his value: " + result);
+              } else {
+                $("#result").text("QueryString parameter not found");
+              }
+
+            });
+
+            //this is an example how you can add a parameter to actual querystring.
+            $("#btnAdd").click(function(){
+              var txtName = $('#txtName').val();
+              var txtValue = $('#txtValue').val();
+
+              req.addQSParameter(txtName,txtValue);
+              $("#link").html('<a href="'+ req.pathname + req.search + '">'+ req.pathname + req.search + '</a>');
+
+
+            });
+
+            //this is an example how you can add a parameter to new querystring.
+            $("#btnNew").click(function(){
+              var txtName = $('#txtName').val();
+              var txtValue = $('#txtValue').val();
+
+              req.addQSParameter(txtName,txtValue, true);
+              $("#link").html('<a href="'+ req.pathname + req.search +'">'+ req.pathname + req.search + '</a>');
+            });
+          });
+        </script>
+    </body>
+</html>
