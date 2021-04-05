@@ -8,6 +8,7 @@ JQuery (tested on 3.6.0)
 
 # How to use it
 *Firstable you have to initialize the object*
+
 var req = new request();
 
 req.init();
@@ -18,11 +19,15 @@ req.queryString(ParameterName);
 ### Get Parameters List:
 *retrieve the parameter list {name: parameter_name, value: parameter_value}*
 
-req.search_parameters
+req.search_parameters;
 
 
 ### Add new Parameter and its value to your actual QueryString
-req.addQSParameter(txtName,txtValue); or req.addQSParameter(txtName,txtValue,false);
+req.addQSParameter(txtName,txtValue); 
+
+or 
+
+req.addQSParameter(txtName,txtValue,false);
 
 ### Add new Parameter and its value to new QueryString (discard the last one)
 req.addQSParameter(txtName,txtValue,true);
