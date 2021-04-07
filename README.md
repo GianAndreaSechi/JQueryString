@@ -15,8 +15,9 @@ var req = new request();
 req.init();
 ```
 ### Get QueryString parameter value:
+```javascript
 req.queryString(ParameterName); 
-
+```
 ### Get Parameters List:
 *retrieve the parameter list {name: parameter_name, value: parameter_value}*
 ```javascript
